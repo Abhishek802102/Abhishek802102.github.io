@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate easy image resizer Pro</title>
+<link rel="icon" href="image-resizer.png" type="image/png">
+<meta name="description" content="Ultimate Easy Image Resizer Pro एक तेज़, सरल और प्रीमियम टूल है जिसे विशेष रूप से आपकी प्राइवेसी और सुविधा को ध्यान में रखकर बनाया गया है। बस अपनी इमेज अपलोड करें, अपना मनचाहा अनुपात (Ratio) चुनें और तुरंत डाउनलोड करें!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="image-resizer.css">
+</head>
+<body>
+<div class="wrapper">
+  <img src="image-resizer.png" class="logo">
+  <h1>ultimate easy image resizer Pro</h1>
+
+  <div class="upload" onclick="file.click()" style="font-size:25px">
+    Click to Upload Image<br>
+    <span style="font-size:12px; color: green">(JPEG / PNG)</span>
+    <input type="file" id="file" accept="image/*">
+  </div>
+
+  <div class="preview">
+    <img id="previewImg" hidden>
+  </div>
+
+  <div class="controls">
+    <div>
+      <label>Width Ratio</label>
+      <input id="rw" type="number">
+    </div>
+
+    <div>
+      <label>Height Ratio</label>
+      <input id="rh" type="number">
+    </div>
+
+    <div>
+      <label>Quality <span id="qVal">90%</span></label>
+      <input type="range" id="quality" min="10" max="100" value="60" class="range" step="1">
+    </div>
+    <div>
+      <label>Format</label>
+      <select id="format">
+        <option value="image/jpeg">JPG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/webp">WEBP</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="size-preview" id="sizePreview">
+    Final size (average):— 
+  </div>
+
+  <div class="actions">
+    <button onclick="resize()">Download image</button>
+    <button onclick="resetAll()">Reset  now</button>
+  </div>
+
+  <footer>
+    Original Ratio Auto Detect • Clean • Premium UI<br>
+    official devloper - Abhishek prajapati
+  </footer>
+</div>
+<script src="image-resizer.js"></script>
+</body>
+</html>

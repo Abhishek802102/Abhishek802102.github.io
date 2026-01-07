@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <link rel="icon" href="image-to-pdf.png" type="image/png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JPG/PNG → PDF Converter pro.</title>
+  <meta name="description" content="अपनी इमेजेस को अपनी मर्जी से सजाएं। पेज साइज से लेकर इमेज क्वालिटी तक, सब कुछ आपके कंट्रोल में। बिना क्वालिटी खोए अपनी तस्वीरों को एक शानदार PDF में बदलें—सिर्फ एक क्लिक में।">
+  <!-- jsPDF CDN (client-side PDF generation) -->
+  <link rel="stylesheet" href="image-to-pdf.css">
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo"><img src="image-to-pdf.png" width="80"></div>
+      <div>
+        <h1>JPG/PNG → PDF Converter Pro.</h1>
+        <p class="lead">इमेज अपलोड करें, ऑर्डर सेट करें और एक आकर्षक PDF डाउनलोड करें — सीधे ब्राउज़र में।</p>
+      </div>
+    </header>
+    <div class="body">
+      <!-- LEFT -->
+      <div class="panel">
+        <div id="drop" class="drop" tabindex="0">
+          <div style="font-size:20px;font-weight:700">Drag & drop इमेज यहाँ रखें</div>
+          <div class="muted">या</div>
+          <div>
+            <input id="fileInput" type="file" accept="image/*" multiple style="display:none" />
+            <button id="pickBtn" class="btn">Choose Images</button>
+          </div>
+          <div class="muted" style="margin-top:6px;font-size:13px">JPEG और PNG दोनो का सपोर्ट — बड़े इमेज ऑटो-रिसाइज़ होंगे</div>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
+          <button id="clearBtn" class="icon-btn">Clear All</button>
+          <button id="convertBtn" class="btn">Convert to PDF</button>
+        </div>
+        <div id="progressWrap" style="margin-top:10px;display:none">
+          <div class="outline" id="progressText">Processing...</div>
+        </div>
+      </div>
+      <!-- RIGHT -->
+      <aside class="panel">
+        <div class="controls">
+          <div>
+            <label class="small">Page Size</label>
+            <select id="pageSize">
+              <option value="a4">A4 (210 × 297 mm)</option>
+              <option value="letter">Letter (216 × 279 mm)</option>
+              <option value="custom">Custom (mm)</option>
+            </select>
+          </div>
+          <div id="customSizeRow" style="display:none">
+            <div class="row">
+              <div class="col">
+                <label class="small">Width (mm)</label>
+                <input id="customW" type="number" value="210" min="10" />
+              </div>
+              <div class="col">
+                <label class="small">Height (mm)</label>
+                <input id="customH" type="number" value="297" min="10" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="small">Orientation</label>
+            <select id="orientation">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+          <div>
+            <label class="small">Image fit</label>
+            <select id="fitMode">
+              <option value="contain">Contain (पूरी इमेज दिखे)</option>
+              <option value="cover">Cover (पूर्ण पेज भरे)</option>
+            </select>
+          </div>
+          <div>
+            <label class="small">Margin (mm)</label>
+            <input id="margin" type="number" value="8" min="0" />
+          </div>
+          <div>
+            <label class="small">Image quality (0.1 - 1) — फ़ाइल साइज कम करने के लिए कम करें</label>
+            <input id="quality" type="range" min="0.1" max="1" step="0.1" value="0.70" />
+          </div>
+          <div>
+            <label class="small">Output filename</label>
+            <input id="outName" type="text" value="converted.pdf"/>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+            <button id="downloadBtn" class="btn" style="flex:1">Convert & Download</button>
+          </div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">
+            टिप्स: बड़े इमेज होने पर ब्राउज़र में अधिक मेमोरी लग सकती है। अगर फाइल बहुत बड़ी हो तो क्वालिटी घटा दें।
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer>Made with ❤️ — JPG/PNG →  PDF, client-side</footer>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="image-to-pdf.js"></script>
+</body>
+</html>

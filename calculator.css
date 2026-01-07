@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+        :root {
+            --bg: #e6def8;
+            --shadow-dark: #1f1f1f;
+            --shadow-light: #518;
+            --accent: green;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 3D बॉडी */
+        .calc-body {
+            background: var(--bg);
+            width: 320px;
+            padding: 25px;
+            border-radius: 35px;
+            box-shadow: 10px 10px 20px var(--shadow-dark), 
+                        -10px -10px 20px var(--shadow-light);
+            position: relative;
+        }
+
+        /* डिस्प्ले में गहराई */
+        .display-well {
+            background: #e6eef7;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+                        inset -6px -6px 12px var(--shadow-light);
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        #exp-view {
+            font-size: 0.85rem;
+            color: #7e8a9a;
+            min-height: 1.2rem;
+            word-break: break-all;
+        }
+
+        #main-view {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #44476a;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        #main-view::-webkit-scrollbar { display: none; }
+
+        /* 3D बटन स्टाइल */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .btn {
+            height: 55px;
+            border-radius: 15px;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #44476a;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 5px 5px 10px var(--shadow-dark), 
+                        -5px -5px 10px var(--shadow-light);
+            position: relative;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* बटन दबने का 3D इफेक्ट */
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), 
+                        inset -3px -3px 6px var(--shadow-light);
+            transform: scale(0.96);
+        }
+
+        .btn-op { color: var(--accent); }
+        .btn-danger { color: #ef4444; }
+        
+        .btn-eq {
+            background: var(--accent);
+            color: white;
+            box-shadow: 4px 4px 10px rgba(59, 130, 246, 0.4), 
+                        -4px -4px 10px var(--shadow-light);
+        }
+
+        .btn-eq:active {
+            background: #2563eb;
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        /* हिस्ट्री पैनल */
+        #history-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            border-radius: 35px;
+            z-index: 100;
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #history-panel.open { transform: translateY(0); }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .history-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--shadow-dark);
+            text-align: right;
+        }

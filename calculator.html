@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <link rel="icon" href="calculator.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="description" content="3D Engine Calculator Pro: आधुनिक गणना का नया अनुभव।
+एक प्रीमियम कैलकुलेटर जो न्यूमॉर्फिज्म (Neumorphism) डिजाइन और 3D विजुअल्स के साथ आता है। यह केवल एक कैलकुलेटर नहीं, बल्कि आपके डेस्कटॉप या मोबाइल के लिए एक स्टाइल स्टेटमेंट है। सटीक गणना, स्मूथ एनिमेशन और डार्क-मोड फ्रेंडली इंटरफेस के साथ।">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3D Engine calculator pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+    <div class="calc-body">
+        <!-- टॉप बार -->
+        <div class="flex justify-between items-center mb-4 px-1">
+            <button onclick="toggleHistory()" class="text-slate-500 hover:text-blue-600">
+                <i class="fas fa-history"></i>
+            </button>
+            <span class="text-[10px] font-bold text-slate-400 tracking-widest uppercase">3D Engine Pro</span>
+            <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.5)]"></div>
+        </div>
+
+        <!-- डिस्प्ले -->
+        <div class="display-well">
+            <div id="exp-view"></div>
+            <div id="main-view">0</div>
+        </div>
+
+        <!-- बटन -->
+        <div class="btn-grid">
+            <div onclick="handle('AC')" class="btn btn-danger text-sm">AC</div>
+            <div onclick="handle('(')" class="btn btn-op">(</div>
+            <div onclick="handle(')')" class="btn btn-op">)</div>
+            <div onclick="handle('/')" class="btn btn-op">÷</div>
+
+            <div onclick="handle('7')" class="btn">7</div>
+            <div onclick="handle('8')" class="btn">8</div>
+            <div onclick="handle('9')" class="btn">9</div>
+            <div onclick="handle('*')" class="btn btn-op">×</div>
+
+            <div onclick="handle('4')" class="btn">4</div>
+            <div onclick="handle('5')" class="btn">5</div>
+            <div onclick="handle('6')" class="btn">6</div>
+            <div onclick="handle('-')" class="btn btn-op">−</div>
+
+            <div onclick="handle('1')" class="btn">1</div>
+            <div onclick="handle('2')" class="btn">2</div>
+            <div onclick="handle('3')" class="btn">3</div>
+            <div onclick="handle('+')" class="btn btn-op">+</div>
+
+            <div onclick="handle('0')" class="btn">0</div>
+            <div onclick="handle('.')" class="btn">.</div>
+            <div onclick="handle('DEL')" class="btn text-slate-400"><i class="fas fa-backspace text-xs"></i></div>
+            <div onclick="handle('=')" class="btn btn-eq">=</div>
+        </div>
+
+        <!-- हिस्ट्री पैनल -->
+        <div id="history-panel">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-slate-600">पुराना हिसाब</h3>
+                <button onclick="toggleHistory()" class="text-slate-400"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="history-items" class="history-list">
+                <div class="text-center text-slate-400 text-sm mt-10">कोई रिकॉर्ड नहीं</div>
+            </div>
+            <button onclick="clearHistory()" class="mt-4 text-[10px] font-bold text-red-500 uppercase tracking-widest">सब मिटाएं</button>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
+
