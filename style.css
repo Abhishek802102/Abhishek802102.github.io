@@ -37,7 +37,7 @@ header h1{
   color: yellow;
 }
 header p{
-  margin-top:1px;
+  margin-top:0.001px;
   font-size:14px;
   opacity:0.8;
   color: white;
