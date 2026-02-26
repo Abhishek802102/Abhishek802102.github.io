@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coming soon...</title>
+    <meta name="description" content="coming Soon...">
+    <style>
+        :root {
+            --accent: blue;
+            --dark: #1a1a1a;
+            --gray: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background:#9df8ea;
+            width: 100%;
+            max-width: 1000px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* कोडिंग कंसोल स्टाइल */
+        .terminal {
+            background: black;
+            color: yellow;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            margin: 25px 0;
+            text-align: left;
+            border-left: 5px solid var(--accent);
+        }
+
+        .terminal span { color: red; }
+        .terminal b { color: blue; font-weight: normal; }
+
+        h1 {
+            color: var(--dark);
+            font-size: 25px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .status-info {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .pulsing-text {
+            color: var(--accent);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* लोडिंग एनीमेशन */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .effort-list {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 10px;
+            font-size: 15px;
+            color: var(--gray);
+            border-top: 2px solid #a61e;
+            padding-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="pulsing-text">
+        <div class="loader"></div>यह टूल अभी तैयार किया जा रहा है...
+    </div>
+    
+    <h1> इस टूल को अभी निर्माण किया जा रहा है</h1><hr>
+    
+    <div class="status-info">
+        हम इस टूल को आपके लिए <b>अधिक सटीक और तेज</b> बनाने हेतु लगातार कोडिंग और टेस्टिंग कर रहे हैं। हमारा लक्ष्य है कि आपको एक त्रुटिहीन (Error-free) अनुभव मिले।
+        <br>
+        और आपके पास कोई सुझाव हैतो कृपया हमसे साझा करें ताकि हम इस टूल को और भी बेहतर बना सके!<br>
+        <a href="mailto:prasadabhishek538@gmail.com"> <i><p style="text-align:center; border:2px solid blue">सुझाव भेजे</p></i></a>
+    </div>
+
+    <div class="terminal">
+        > <b>Status:</b> Developing 🚀<br>
+        > <span>[INFO]</span> UI Components rendering... 80%<br>
+        > <span>[INFO]</span> Database connection established.<br>
+        > <b>Action:</b> Optimizing for mobile users...
+    </div>
+
+    <div class="effort-list">
+        <strong>हमारा वर्तमान प्रयास:</strong>
+        <ul style="margin: 10px 0 0 20px; padding: 0;">
+            <li>फास्ट रिस्पांस के लिए सर्वर को तैयार करना।</li>
+            <li>सुरक्षा मानकों (Security Protocols) की जांच।</li>
+            <li>यूजर के सुझावों के आधार पर फीचर्स जोड़ना।</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        हम इसे बहुत जल्द लॉन्च करने के लिए प्रयास कर रहे हैं कृपया  हमसे जुड़े रहें!<br>
+        <strong>Team @ [coming soon....]</strong><br>
+        <a href="index.html">होम पेज पर जाएं</a>
+    </div>
+</div>
+
+</body>
+</html>

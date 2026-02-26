@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise Image Compressor(image-to-zip)</title>
+  <meta name="description" content="बेहतरीन इमेज टू ZIP कनवर्टर और कंप्रेसर। कई फोटो को एक साथ कंप्रेस करें और उन्हें ZIP फोल्डर में बदलें। JPG, PNG और WebP सपोर्ट के साथ क्वालिटी बरकरार रखें।">
+  <meta name="author" content="Toolhub.Ap">
+<link rel="canonical" href="https://abhishek802102.github.io/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="any" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<meta name="msapplication-TileImage" content="/favicon.png">
+<meta property="og:site_name" content="Toolhub.Ap">
+<meta property="og:title" content="Image to ZIP Converter (image compressor">
+<meta property="og:image" content="https://abhishek802102.github.io/zip-converter.png">
+<meta property="og:description" content="बेहतरीन इमेज टू ZIP कनवर्टर और कंप्रेसर। कई फोटो को एक साथ कंप्रेस करें और उन्हें ZIP फोल्डर में बदलें। JPG, PNG और WebP सपोर्ट के साथ क्वालिटी बरकरार रखें।">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(1deg, blue, green, red);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .container {
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(12px);
+      padding: 50px;
+      border-radius: 50px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 1px 50px black
+    }
+    h1 {
+      margin-bottom: 50px;
+      font-size: 35px;
+    }
+    p {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+    input[type=file] {
+      display: none;
+    }
+    label {
+      display: block;
+      margin: 25px 0;
+      padding: 50px;
+      border: 2.5px dashed yellow;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    label:hover {
+      background: rgba(255,250,255,0.15);
+    }
+    button {
+      background: yellow;
+      border: none;
+      color: black;
+      padding: 25px 50px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
+    button:hover {
+      background: #09A000;
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image to ZIP</h1>
+    <p>अपनी images चुनें और एक ZIP फ़ाइल में डाउनलोड करें</p><label for="images">📸 Images Select करें</label>
+<input type="file" id="images" multiple accept="image/*" />
+
+<input type="text" id="zipName" value="compressed image" style="width:100%;padding:12px;border-radius:12px;border:none;font-size:14px;margin-bottom:15px;" />
+
+<div id="fileList" style="max-height:120px;overflow-y:auto;text-align:left;font-size:13px;margin-bottom:20px;"></div>
+
+<button onclick="createZip()">⬇️ZIP डाउनलोड करें⬇️</button>
+
+<footer>Modern • Fast • Secure
+<p><a href="index.html" style="color:#ffb9b9;"> होम पेज पर जाएं</a></p>
+</footer>
+
+  </div>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>  <script>
+    const imagesInput = document.getElementById('images');
+    const fileList = document.getElementById('fileList');
+
+    imagesInput.addEventListener('change', () => {
+      fileList.innerHTML = '';
+      if (!imagesInput.files.length) return;
+      [...imagesInput.files].forEach((file, index) => {
+        const div = document.createElement('div');
+        div.textContent = `🖼️ ${index + 1}. ${file.name}`;
+        fileList.appendChild(div);
+      });
+    });
+
+    async function createZip() {
+      const files = document.getElementById('images').files;
+      if (!files.length) {
+        alert('कोई इमेज नहीं चुना गया कृपया पहले images चुनें');
+        return;
+      }
+      const zip = new JSZip();
+      for (const file of files) {
+        zip.file(file.name, file);
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      const zipName = document.getElementById('zipName').value || 'compressed image';
+      saveAs(content, zipName.endsWith('.zip') ? zipName : zipName + '.zip');
+    }
+  </script></body>
+</html>

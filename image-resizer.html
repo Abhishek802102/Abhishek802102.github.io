@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate easy image resizer Pro</title>
+<meta name="author" content="Toolhub.Ap">
+<link rel="canonical" href="https://abhishek802102.github.io/">
+<meta property="og:type" content="website">
+<meta name="description" content="Ultimate Easy Image Resizer Pro एक तेज़, सरल और प्रीमियम टूल है जिसे विशेष रूप से आपकी प्राइवेसी और सुविधा को ध्यान में रखकर बनाया गया है। बस अपनी इमेज अपलोड करें, अपना मनचाहा अनुपात (Ratio) चुनें और तुरंत डाउनलोड करें!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="any" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<meta name="msapplication-TileImage" content="/favicon.png">
+<meta property="og:site_name" content="Toolhub.Ap">
+<meta property="og:title" content="Ultimate easy image resizer Pro">
+<meta property="og:image" content="https://abhishek802102.github.io/image-resizer.png">
+<meta property="og:description" content="Ultimate Easy Image Resizer Pro एक तेज़, सरल और प्रीमियम टूल है जिसे विशेष रूप से आपकी प्राइवेसी और सुविधा को ध्यान में रखकर बनाया गया है। बस अपनी इमेज अपलोड करें, अपना मनचाहा अनुपात (Ratio) चुनें और तुरंत डाउनलोड करें!">
+<style>
+  :root{
+  --bg:#020617;
+  --card:rgba(18,26,47,.75);
+  --border:#b9d1e8;
+  --accent:yellow;
+  --accent2:blue;
+  --text: #bbf2cc;
+}
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top,#0ea5e9 0%,transparent 40%),
+    linear-gradient(135deg,#020617,#0b1220);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+}
+
+.wrapper{
+  width:95%;
+  max-width:1000px;
+  background:var(--card);
+  backdrop-filter:blur(14px);
+  border:2px solid var(--border);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 20px 60px black;
+}
+
+img.logo{
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:-20px;
+  border: 2px solid black;
+  border-radius:50%;
+}
+
+h1{
+  text-align:center;
+  font-size:30px;
+  margin:0 0 20px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* Upload */
+.upload{
+  border:2px dashed var(--border);
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  position:relative;
+  background-color: #5484;
+}
+.upload:hover{
+  background: #2183;
+  border-color:var(--accent);
+}
+.upload input{display:none}
+
+/* Preview */
+.preview{
+  margin-top:5px;
+  display:flex;
+  justify-content:center;
+}
+.preview img{
+  max-width:25%;
+  max-height:25%;
+  border-radius:15px;
+  border:2px solid var(--border);
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+/* Controls */
+.controls{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+label{
+  font-size:17px;
+  color:#c7d2fe;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+input,select{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0e162a;
+  color:var(--text);
+}
+.range{accent-color:var(--accent)}
+
+/* Size Preview */
+.size-preview{
+  margin-top:25px;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(2,201,240,.12);
+  border:1px solid var(--border);
+  font-size:15px;
+  color:yellow;
+}
+
+/* Actions */
+.actions{
+  margin-top:20px;
+  display:flex;
+  gap:5px;
+}
+button{
+  flex:1;
+  padding:15px;
+  border-radius:12px;
+  border:none;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#020617;
+  font-weight:700;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+button::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:translateX(-100%);
+  transition:.4s;
+}
+button:hover::after{
+  transform:translateX(100%);
+}
+button:last-child{
+  background: white;
+  color: black;
+}
+
+footer{
+  margin-top:15px;
+  text-align:center;
+  font-size:12px;
+  color:#94a3c8;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <img src="image-resizer.png" class="logo">
+  <h1>ultimate easy image resizer Pro</h1>
+
+  <div class="upload" onclick="file.click()" style="font-size:25px">
+    Click to Upload Image<br>
+    <span style="font-size:12px; color: green">(JPEG / PNG)</span>
+    <input type="file" id="file" accept="image/*">
+  </div>
+
+  <div class="preview">
+    <img id="previewImg" hidden>
+  </div>
+
+  <div class="controls">
+    <div>
+      <label>Width Ratio</label>
+      <input id="rw" type="number">
+    </div>
+
+    <div>
+      <label>Height Ratio</label>
+      <input id="rh" type="number">
+    </div>
+
+    <div>
+      <label>Quality <span id="qVal">90%</span></label>
+      <input type="range" id="quality" min="10" max="100" value="60" class="range" step="1">
+    </div>
+    <div>
+      <label>Format</label>
+      <select id="format">
+        <option value="image/jpeg">JPG</option>
+        <option value="image/png">PNG</option>
+        <option value="image/webp">WEBP</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="size-preview" id="sizePreview">
+    Final size (average):— 
+  </div>
+
+  <div class="actions">
+    <button onclick="resize()">Download image</button>
+    <button onclick="resetAll()">Reset  now</button>
+  </div>
+
+  <footer>
+    Original Ratio Auto Detect • Clean • Premium UI<br>
+    official devloper - Abhishek prajapati<br>
+    <p><a href="index.html" style="color:yellow; font-size:15px;"> होम पेज पर जाएं</a></p>
+  </footer>
+</div>
+<script>
+  const file = document.getElementById("file");
+const img = document.getElementById("previewImg");
+const rw = document.getElementById("rw");
+const rh = document.getElementById("rh");
+const quality = document.getElementById("quality");
+const qVal = document.getElementById("qVal");
+const sizePreview = document.getElementById("sizePreview");
+const format = document.getElementById("format");
+
+let image = new Image();
+
+qVal.textContent = quality.value + "%";
+quality.oninput = updateSize;
+format.onchange = updateSize;
+
+file.onchange = () => {
+  const f = file.files[0];
+  if(!f) return;
+  const url = URL.createObjectURL(f);
+  image.src = url;
+  img.src = url;
+  img.hidden = false;
+
+  image.onload = () => {
+    const gcd = (a,b)=>b?gcd(b,a%b):a;
+    const g = gcd(image.width,image.height);
+    rw.value = image.width/g;
+    rh.value = image.height/g;
+    updateSize();
+  };
+};
+
+function updateSize(){
+  qVal.textContent = quality.value + "%";
+  if(!image.src) return;
+
+  const c = document.createElement("canvas");
+  const base = 1000;
+  c.width = base;
+  c.height = Math.round(base*(rh.value/rw.value));
+  c.getContext("2d").drawImage(image,0,0,c.width,c.height);
+
+  const data = c.toDataURL(format.value,quality.value/100);
+  const bytes = Math.round((data.length*3)/4);
+  sizePreview.textContent =
+    "Final Size (average):- " +
+    (bytes>1024*1024
+      ? (bytes/1024/1024).toFixed(2)+" MB"
+      : (bytes/1024).toFixed(1)+" KB");
+}
+
+function resize(){
+  if(!image.src) return alert("Please upload a image");
+  const c=document.createElement("canvas");
+  c.width=1000;
+  c.height=Math.round(1000*(rh.value/rw.value));
+  c.getContext("2d").drawImage(image,0,0,c.width,c.height);
+
+  const a=document.createElement("a");
+  a.download="resized-image";
+  a.href=c.toDataURL(format.value,quality.value/100);
+  a.click();
+}
+
+function resetAll(){
+  img.hidden=true;
+  img.src="";
+  file.value="";
+  rw.value="";
+  rh.value="";
+  quality.value=90;
+  qVal.textContent="90%";
+  sizePreview.textContent="Final Size (average):— ";
+}
+</script>
+</body>
+</html>

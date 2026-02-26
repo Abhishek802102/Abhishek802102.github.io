@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JPG/PNG → PDF Converter pro.</title>
+  <meta name="description" content="अपनी इमेजेस को अपनी मर्जी से सजाएं। पेज साइज से लेकर इमेज क्वालिटी तक, सब कुछ आपके कंट्रोल में। बिना क्वालिटी खोए अपनी तस्वीरों को एक शानदार PDF में बदलें—सिर्फ एक क्लिक में।">
+  <meta name="author" content="Toolhub.Ap">
+<link rel="canonical" href="https://abhishek802102.github.io/">
+<meta property="og:type" content="website">
+  <!-- jsPDF CDN (client-side PDF generation) -->
+  <link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="any" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<meta name="msapplication-TileImage" content="/favicon.png">
+<meta property="og:site_name" content="Toolhub.Ap">
+<meta property="og:title" content="JPG/PNG → PDF Converter pro.">
+<meta property="og:image" content="https://abhishek802102.github.io/image-to-pdf.png">
+<meta property="og:description" content="अपनी इमेजेस को अपनी मर्जी से सजाएं। पेज साइज से लेकर इमेज क्वालिटी तक, सब कुछ आपके कंट्रोल में। बिना क्वालिटी खोए अपनी तस्वीरों को एक शानदार PDF में बदलें—सिर्फ एक क्लिक में।">
+<style>
+      :root{
+      --bg: #0f172a;
+      --card: #0b2020;
+      --accent: #829952;
+      --muted: white;
+      --glass: #565816;
+    }
+    *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,red 30%, blue 100%);
+      color:#ffffff;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:15px;
+    }
+    .container{
+      width:100%;
+      max-width:1000px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.05));
+      border-radius:15px;
+      padding:15px;
+      box-shadow:0 1px 50px #000000;
+      border:1px solid #b82069;
+    }
+    header{
+      display:flex;
+      gap:15px;
+      align-items:center;
+      margin-bottom:15px;
+    }
+    .logo{
+      width:60px;height:60px;border-radius:100px;
+      background:linear-gradient(135deg,var(--accent),#7c3aed);
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#021029;
+      font-size:20px;
+      box-shadow:0 6px 18px rgba(7,11,27,0.6);
+    }
+    h1{font-size:18px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:15px}
+    .body{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:15px;
+      margin-top:15px;
+    }
+
+    /* left panel */
+    .panel{
+      background:var(--card);
+      border-radius:10px;
+      padding:15px;
+      border:5px solid #0005;
+    }
+
+    .drop{
+      border:3px dashed #2486b1;
+      border-radius:10px;
+      padding:25px;
+      text-align:center;
+      min-height:150px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:10px;
+      background:linear-gradient(180deg, #1848, #615);
+    }
+    .drop.dragover{border-color:rgba(6,182,112,0.8);box-shadow:0 5px 30px rgba(6,2,182,0.9);}
+
+    .btn{
+      background:var(--accent); color:black; padding:15px 30px;border-radius:10px;cursor:pointer;border:none;font-weight:600;
+      box-shadow:0 8px 8px #5496;
+    }
+    .muted{color:var(--muted);font-size:25px}
+
+    .thumbs{margin-top:5px;display:flex;flex-direction:column;gap:10px;max-height:360px;overflow:auto;padding-right:10px}
+    .thumb{
+      display:flex;gap:10px;align-items:center;padding:8px;background:var(--glass);border-radius:8px;border:1px solid rgba(255,255,255,0.02);
+    }
+    .thumb img{width:65px;height:50px;object-fit:cover;border-radius:6px;border:2px solid #655486;}
+    .meta{flex:1}
+    .meta .name{font-weight:600;font-size:15px}
+    .meta .size{font-size:12px;color:var(--muted);margin-top:4px}
+    .actions{display:flex;gap:6px;align-items:center}
+    .icon-btn{background:transparent;border:2px solid green;padding:10px;border-radius:10px;color:var(--muted);cursor:pointer}
+    .icon-btn:hover{color:white;border-color:white}
+
+    /* right panel controls */
+    .controls{display:flex;flex-direction:column;gap:8px}
+    label.small{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+    select,input[type="range"]{width:100%;padding:10px;border-radius:10px;border:2px solid rgba(255,255,255,0.3);background:transparent;color:inherit}
+    .row{display:flex;gap:10px}
+    .row .col{flex:1}
+    .convert-row{display:flex;gap:10px;margin-top:10px}
+    .outline{background:transparent;border:2px solid rgba(25,25,255,0.4);padding:10px;border-radius:10px;color:var(--muted);font-size:15px}
+
+    footer{margin-top:15px;text-align:center;color:var(--muted);font-size:15px}
+    @media (max-width:1000px){
+      .body{grid-template-columns: 1fr; }
+      .logo{width:50px;height:50px}
+    }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo"><img src="image-to-pdf.png" width="80"></div>
+      <div>
+        <h1>JPG/PNG → PDF Converter Pro.</h1>
+        <p class="lead">इमेज अपलोड करें, ऑर्डर सेट करें और एक आकर्षक PDF डाउनलोड करें — सीधे ब्राउज़र में।</p>
+      </div>
+    </header>
+    <div class="body">
+      <!-- LEFT -->
+      <div class="panel">
+        <div id="drop" class="drop" tabindex="0">
+          <div style="font-size:20px;font-weight:700">Drag & drop इमेज यहाँ रखें</div>
+          <div class="muted">या</div>
+          <div>
+            <input id="fileInput" type="file" accept="image/*" multiple style="display:none" />
+            <button id="pickBtn" class="btn">Choose Images</button>
+          </div>
+          <div class="muted" style="margin-top:6px;font-size:13px">JPEG और PNG दोनो का सपोर्ट — बड़े इमेज ऑटो-रिसाइज़ होंगे</div>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
+          <button id="clearBtn" class="icon-btn">Clear All</button>
+          <button id="convertBtn" class="btn">Convert to PDF</button>
+        </div>
+        <div id="progressWrap" style="margin-top:10px;display:none">
+          <div class="outline" id="progressText">Processing...</div>
+        </div>
+      </div>
+      <!-- RIGHT -->
+      <aside class="panel">
+        <div class="controls">
+          <div>
+            <label class="small">Page Size</label>
+            <select id="pageSize">
+              <option value="a4">A4 (210 × 297 mm)</option>
+              <option value="letter">Letter (216 × 279 mm)</option>
+              <option value="custom">Custom (mm)</option>
+            </select>
+          </div>
+          <div id="customSizeRow" style="display:none">
+            <div class="row">
+              <div class="col">
+                <label class="small">Width (mm)</label>
+                <input id="customW" type="number" value="210" min="10" />
+              </div>
+              <div class="col">
+                <label class="small">Height (mm)</label>
+                <input id="customH" type="number" value="297" min="10" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="small">Orientation</label>
+            <select id="orientation">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+          <div>
+            <label class="small">Image fit</label>
+            <select id="fitMode">
+              <option value="contain">Contain (पूरी इमेज दिखे)</option>
+              <option value="cover">Cover (पूर्ण पेज भरे)</option>
+            </select>
+          </div>
+          <div>
+            <label class="small">Margin (mm)</label>
+            <input id="margin" type="number" value="8" min="0" />
+          </div>
+          <div>
+            <label class="small">Image quality (0.1 - 1) — फ़ाइल साइज कम करने के लिए कम करें</label>
+            <input id="quality" type="range" min="0.1" max="1" step="0.1" value="0.70" />
+          </div>
+          <div>
+            <label class="small">Output filename</label>
+            <input id="outName" type="text" value="converted.pdf"/>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+            <button id="downloadBtn" class="btn" style="flex:1">Convert & Download</button>
+          </div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">
+            टिप्स: बड़े इमेज होने पर ब्राउज़र में अधिक मेमोरी लग सकती है। अगर फाइल बहुत बड़ी हो तो क्वालिटी घटा दें।
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer>Made with ❤️ — JPG/PNG →  PDF, client-side<br>
+    <a href="index.html" style="color:white"> होम पेज पर जाएं</a>
+    </footer>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+    
+    // सुरक्षा जांच: अगर लाइब्रेरी लोड नहीं हुई तो अलर्ट देगा
+    if (!window.jspdf) {
+        alert("Error: jsPDF लाइब्रेरी लोड नहीं हो पाई। इंटरनेट कनेक्शन चेक करें और पेज रिफ्रेश करें।");
+        return;
+    }
+
+    // लाइब्रेरी लोड होने के बाद ही इसे वेरिएबल में डालें
+    const { jsPDF } = window.jspdf;
+
+    // आपके सारे एलिमेंट्स
+    const fileInput = document.getElementById('fileInput');
+    const pickBtn = document.getElementById('pickBtn');
+    const drop = document.getElementById('drop');
+    const thumbs = document.getElementById('thumbs');
+    const clearBtn = document.getElementById('clearBtn');
+    const convertBtn = document.getElementById('convertBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const progressWrap = document.getElementById('progressWrap');
+    const progressText = document.getElementById('progressText');
+
+    const pageSizeEl = document.getElementById('pageSize');
+    const customSizeRow = document.getElementById('customSizeRow');
+    const customW = document.getElementById('customW');
+    const customH = document.getElementById('customH');
+    const orientationEl = document.getElementById('orientation');
+    const fitModeEl = document.getElementById('fitMode');
+    const marginEl = document.getElementById('margin');
+    const qualityEl = document.getElementById('quality');
+    const outNameEl = document.getElementById('outName');
+
+    let images = [];
+
+    // Helper Functions
+    function humanSize(n) {
+        if (n < 1024) return n + ' B';
+        if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+        return (n / 1024 / 1024).toFixed(2) + ' MB';
+    }
+
+    function escapeHtml(s) {
+        return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // Image Adding Logic
+    function addFiles(files) {
+        const arr = Array.from(files).filter(f => f.type.startsWith('image/'));
+        if (arr.length === 0) return;
+        arr.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                images.push({ file, dataUrl: e.target.result, name: file.name, size: file.size });
+                renderThumbs();
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function renderThumbs() {
+        thumbs.innerHTML = '';
+        images.forEach((img, idx) => {
+            const d = document.createElement('div');
+            d.className = 'thumb';
+            d.innerHTML = `
+            <img src="${img.dataUrl}" alt="${img.name}" />
+            <div class="meta">
+              <div class="name">${idx+1}. ${escapeHtml(img.name)}</div>
+              <div class="size">${humanSize(img.size)}</div>
+            </div>
+            <div class="actions">
+              <button class="icon-btn" data-action="up">⬆</button>
+              <button class="icon-btn" data-action="down">⬇</button>
+              <button class="icon-btn" data-action="remove">✖</button>
+            </div>`;
+            
+            d.querySelectorAll('[data-action]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const action = btn.getAttribute('data-action');
+                    if (action === 'remove') { images.splice(idx, 1); }
+                    else if (action === 'up' && idx > 0) { const temp = images[idx]; images[idx] = images[idx-1]; images[idx-1] = temp; }
+                    else if (action === 'down' && idx < images.length - 1) { const temp = images[idx]; images[idx] = images[idx+1]; images[idx+1] = temp; }
+                    renderThumbs();
+                });
+            });
+            thumbs.appendChild(d);
+        });
+    }
+
+    // Listeners
+    if(pickBtn) pickBtn.addEventListener('click', () => fileInput.click());
+    if(fileInput) fileInput.addEventListener('change', () => addFiles(fileInput.files));
+    
+    if(drop) {
+        ['dragenter', 'dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('dragover'); }));
+        ['dragleave', 'drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('dragover'); }));
+        drop.addEventListener('drop', e => { if (e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+    }
+
+    if(clearBtn) clearBtn.addEventListener('click', () => { if (confirm('Clear all?')) { images = []; renderThumbs(); } });
+
+    if(pageSizeEl) pageSizeEl.addEventListener('change', () => {
+        customSizeRow.style.display = pageSizeEl.value === 'custom' ? 'block' : 'none';
+    });
+
+    // PDF Conversion Logic
+    async function convertAndDownload() {
+        if (images.length === 0) { alert('Please upload images first!'); return; }
+        
+        progressWrap.style.display = 'block';
+        progressText.textContent = 'Starting...';
+
+        // Wait a tiny bit to let UI update
+        await new Promise(r => setTimeout(r, 10));
+
+        let pageW = 210, pageH = 297;
+        if (pageSizeEl.value === 'letter') { pageW = 216; pageH = 279; }
+        else if (pageSizeEl.value === 'custom') { 
+            pageW = parseFloat(customW.value) || 210; 
+            pageH = parseFloat(customH.value) || 297; 
+        }
+
+        const orient = orientationEl.value;
+        const pdf = new jsPDF({ unit: 'mm', format: [pageW, pageH], orientation: orient });
+        
+        const finalW = (orient === 'portrait') ? pageW : pageH;
+        const finalH = (orient === 'portrait') ? pageH : pageW;
+        const margin = parseFloat(marginEl.value) || 0;
+        const fit = fitModeEl.value;
+        const quality = parseFloat(qualityEl.value) || 0.75;
+
+        for (let i = 0; i < images.length; i++) {
+            progressText.textContent = `Processing image ${i+1} / ${images.length}`;
+            
+            const imgEl = await loadImage(images[i].dataUrl);
+            const availW = finalW - (2 * margin);
+            const availH = finalH - (2 * margin);
+            
+            // Calculate dimensions
+            let drawW = availW, drawH = availH;
+            const imgRatio = imgEl.naturalWidth / imgEl.naturalHeight;
+            const pageRatio = availW / availH;
+
+            if (fit === 'contain') {
+                if (imgRatio > pageRatio) { drawH = availW / imgRatio; } 
+                else { drawW = availH * imgRatio; }
+            } else { // cover
+                if (imgRatio > pageRatio) { drawW = availH * imgRatio; } 
+                else { drawH = availW / imgRatio; }
+            }
+
+            const x = margin + (availW - drawW) / 2;
+            const y = margin + (availH - drawH) / 2;
+
+            // Convert to JPEG for compression
+            const jpegData = await toJpeg(imgEl, quality);
+
+            if (i > 0) pdf.addPage([pageW, pageH], orient);
+            pdf.addImage(jpegData, 'JPEG', x, y, drawW, drawH);
+        }
+
+        progressText.textContent = 'Saving PDF...';
+        pdf.save(outNameEl.value || 'download.pdf');
+        progressWrap.style.display = 'none';
+    }
+
+    function loadImage(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = url;
+        });
+    }
+
+    function toJpeg(img, q) {
+        return new Promise((resolve) => {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF'; // Remove transparency
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            resolve(canvas.toDataURL('image/jpeg', q));
+        });
+    }
+
+    if(convertBtn) convertBtn.addEventListener('click', convertAndDownload);
+    if(downloadBtn) downloadBtn.addEventListener('click', convertAndDownload);
+
+});
+
+  </script>
+</body>
+</html>
