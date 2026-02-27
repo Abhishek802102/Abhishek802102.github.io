@@ -22,7 +22,6 @@ body{
 header{
   position: relative;
   width: 100%;
-  height: 42vh; /* या जितनी ऊँचाई चाहिए */
   overflow: hidden;
   color: white;
 }
