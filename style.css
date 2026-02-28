@@ -39,6 +39,7 @@ header video{
 header img.mainlogo{
   width: 200px;
   margin-top: -10px;
+  border-radius: 50%;
 }
 header h1{
   margin-top: -25px;
