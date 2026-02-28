@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Engine calculator Pro | Fast & Smooth | Toolhub.Ap</title>
+  <meta name="description" content="आधुनिक गणना का नया अनुभव। एक प्रीमियम कैलकुलेटर डिजाइन और 3D विजुअल्स के साथ। सटीक गणना, स्मूथ एनिमेशन साथ।">
+  <meta name="author" content="Toolhub.Ap">
+  <meta name="keywords" content="3D Engine calculator Pro,Toolhub.Ap">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://abhishek802102.github.io/3D-Engine-calculator.html">
+
+  <!-- Favicon / Apple Touch Icon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Toolhub.Ap">
+  <meta property="og:title" content="3D Engine calculator Pro | Fast & Smooth | Toolhub.Ap">
+  <meta property="og:description" content="Toolhub.Ap द्वारा संचालित 3D Engine calculator pro.-आधुनिक गणना का नया अनुभव। एक प्रीमियम कैलकुलेटर डिजाइन और 3D विजुअल्स के साथ। सटीक गणना, स्मूथ एनिमेशन साथ।">
+  <meta property="og:url" content="https://abhishek802102.github.io/3D-Engine-calculator.html">
+  <meta property="og:image" content="https://abhishek802102.github.io/calculator.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D Engine calculator Pro | Fast & Smooth | Toolhub.Ap">
+  <meta name="twitter:description" content="Toolhub.Ap द्वारा संचालित 3D Engine calculator pro.-आधुनिक गणना का नया अनुभव। एक प्रीमियम कैलकुलेटर डिजाइन और 3D विजुअल्स के साथ। सटीक गणना, स्मूथ एनिमेशन साथ।">
+  <meta name="twitter:image" content="https://abhishek802102.github.io/calculator.png">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#FFA500">
+
+  <!-- Structured Data: WebSite + Organization + Logo -->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "3D Engine Calculator Pro.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "url": "https://abhishek802102.github.io/3D-Engine-calculator.html",
+  "image": "https://abhishek802102.github.io/calculator.png",
+  "description": "Toolhub.Ap द्वारा संचालित 3D Engine calculator pro.-आधुनिक गणना का नया अनुभव। एक प्रीमियम कैलकुलेटर डिजाइन और 3D विजुअल्स के साथ। सटीक गणना, स्मूथ एनिमेशन साथ।",
+  "creator": {
+    "@type": "Organization",
+    "name": "Toolhub.Ap",
+    "url": "https://abhishek802102.github.io/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  }
+}
+</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+        :root {
+            --bg: #e6def8;
+            --shadow-dark: #1f1f1f;
+            --shadow-light: #518;
+            --accent: green;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 3D बॉडी */
+        .calc-body {
+            background: var(--bg);
+            width: 320px;
+            padding: 25px;
+            border-radius: 35px;
+            box-shadow: 10px 10px 20px var(--shadow-dark), 
+                        -10px -10px 20px var(--shadow-light);
+            position: relative;
+        }
+
+        /* डिस्प्ले में गहराई */
+        .display-well {
+            background: #e6eef7;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+                        inset -6px -6px 12px var(--shadow-light);
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        #exp-view {
+            font-size: 0.85rem;
+            color: #7e8a9a;
+            min-height: 1.2rem;
+            word-break: break-all;
+        }
+
+        #main-view {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #44476a;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        #main-view::-webkit-scrollbar { display: none; }
+
+        /* 3D बटन स्टाइल */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .btn {
+            height: 55px;
+            border-radius: 15px;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #44476a;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 5px 5px 10px var(--shadow-dark), 
+                        -5px -5px 10px var(--shadow-light);
+            position: relative;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* बटन दबने का 3D इफेक्ट */
+        .btn:active {
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), 
+                        inset -3px -3px 6px var(--shadow-light);
+            transform: scale(0.96);
+        }
+
+        .btn-op { color: var(--accent); }
+        .btn-danger { color: #ef4444; }
+        
+        .btn-eq {
+            background: var(--accent);
+            color: white;
+            box-shadow: 4px 4px 10px rgba(59, 130, 246, 0.4), 
+                        -4px -4px 10px var(--shadow-light);
+        }
+
+        .btn-eq:active {
+            background: #2563eb;
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        /* हिस्ट्री पैनल */
+        #history-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            border-radius: 35px;
+            z-index: 100;
+            padding: 30px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #history-panel.open { transform: translateY(0); }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .history-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--shadow-dark);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calc-body">
+        <!-- टॉप बार -->
+        <div class="flex justify-between items-center mb-4 px-1">
+            <button onclick="toggleHistory()" class="text-slate-500 hover:text-blue-600">
+                <i class="fas fa-history"></i>
+            </button>
+            <span class="text-[10px] font-bold text-slate-400 tracking-widest uppercase">3D Engine Pro</span>
+            <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.5)]"></div>
+        </div>
+
+        <!-- डिस्प्ले -->
+        <div class="display-well">
+            <div id="exp-view"></div>
+            <div id="main-view">0</div>
+        </div>
+
+        <!-- बटन -->
+        <div class="btn-grid">
+            <div onclick="handle('AC')" class="btn btn-danger text-sm">AC</div>
+            <div onclick="handle('(')" class="btn btn-op">(</div>
+            <div onclick="handle(')')" class="btn btn-op">)</div>
+            <div onclick="handle('/')" class="btn btn-op">÷</div>
+
+            <div onclick="handle('7')" class="btn">7</div>
+            <div onclick="handle('8')" class="btn">8</div>
+            <div onclick="handle('9')" class="btn">9</div>
+            <div onclick="handle('*')" class="btn btn-op">×</div>
+
+            <div onclick="handle('4')" class="btn">4</div>
+            <div onclick="handle('5')" class="btn">5</div>
+            <div onclick="handle('6')" class="btn">6</div>
+            <div onclick="handle('-')" class="btn btn-op">−</div>
+
+            <div onclick="handle('1')" class="btn">1</div>
+            <div onclick="handle('2')" class="btn">2</div>
+            <div onclick="handle('3')" class="btn">3</div>
+            <div onclick="handle('+')" class="btn btn-op">+</div>
+
+            <div onclick="handle('0')" class="btn">0</div>
+            <div onclick="handle('.')" class="btn">.</div>
+            <div onclick="handle('DEL')" class="btn text-slate-400"><i class="fas fa-backspace text-xs"></i></div>
+            <div onclick="handle('=')" class="btn btn-eq">=</div>
+        </div>
+
+        <!-- हिस्ट्री पैनल -->
+        <div id="history-panel">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-slate-600">पुराना हिसाब</h3>
+                <button onclick="toggleHistory()" class="text-slate-400"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="history-items" class="history-list">
+                <div class="text-center text-slate-400 text-sm mt-10">कोई रिकॉर्ड नहीं</div>
+            </div>
+            <button onclick="clearHistory()" class="mt-4 text-[10px] font-bold text-red-500 uppercase tracking-widest">सब मिटाएं</button>
+        </div><br>
+        <p style="text-align:center;"><a href="index.html"> होम पेज पर जाएं</a></p>
+    </div>
+    <script>
+              let state = {
+            expr: '',
+            lastRes: null,
+            history: []
+        };
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playTick() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1000, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        function handle(val) {
+            playTick();
+            const lastChar = state.expr.slice(-1);
+            const ops = ['+', '-', '*', '/'];
+
+            if (val === 'AC') {
+                state.expr = '';
+            } else if (val === 'DEL') {
+                state.expr = state.expr.slice(0, -1);
+            } else if (val === '=') {
+                calculate();
+                return;
+            } else if (ops.includes(val)) {
+                // बग फिक्स: लगातार दो ऑपरेटर होने पर पिछला बदलें
+                if (ops.includes(lastChar)) {
+                    state.expr = state.expr.slice(0, -1) + val;
+                } else if (state.expr !== '' || val === '-') {
+                    state.expr += val;
+                }
+            } else if (val === '.') {
+                // बग फिक्स: एक नंबर में दो डेसीमल रोकना
+                const parts = state.expr.split(/[\+\-\*\/]/);
+                const currentNum = parts[parts.length - 1];
+                if (!currentNum.includes('.')) {
+                    state.expr += '.';
+                }
+            } else {
+                // अगर पिछली बार '=' दबाया था और अब नंबर दबाया तो नया शुरू करें
+                if (state.lastRes !== null) {
+                    state.expr = val;
+                    state.lastRes = null;
+                } else {
+                    state.expr += val;
+                }
+            }
+            updateUI();
+        }
+
+        function calculate() {
+            try {
+                if (!state.expr) return;
+
+                // बग फिक्स: अनबैलेंस ब्रैकेट फिक्स करें
+                let openB = (state.expr.match(/\(/g) || []).length;
+                let closeB = (state.expr.match(/\)/g) || []).length;
+                let finalExpr = state.expr + ')'.repeat(Math.max(0, openB - closeB));
+
+                // इवैल्यूएशन
+                let result = eval(finalExpr);
+                
+                // शुद्धता फिक्स
+                if (!Number.isInteger(result)) {
+                    result = parseFloat(result.toFixed(8));
+                }
+
+                // हिस्ट्री अपडेट
+                state.history.unshift({ q: state.expr, a: result });
+                if (state.history.length > 10) state.history.pop();
+                renderHistory();
+
+                document.getElementById('exp-view').innerText = state.expr + ' =';
+                state.expr = result.toString();
+                state.lastRes = result;
+                updateUI();
+            } catch (e) {
+                document.getElementById('main-view').innerText = "Error";
+                setTimeout(() => { state.expr = ''; updateUI(); }, 1000);
+            }
+        }
+
+        function updateUI() {
+            const main = document.getElementById('main-view');
+            const exp = document.getElementById('exp-view');
+            
+            main.innerText = state.expr || '0';
+            if (state.lastRes === null) exp.innerText = state.expr.replace(/\*/g, '×').replace(/\//g, '÷');
+            
+            // फोंट साइज को टेक्स्ट की लंबाई के हिसाब से एडजस्ट करें
+            if (main.innerText.length > 9) main.style.fontSize = '1.5rem';
+            else main.style.fontSize = '2.2rem';
+        }
+
+        function toggleHistory() {
+            document.getElementById('history-panel').classList.toggle('open');
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('history-items');
+            if (state.history.length === 0) {
+                list.innerHTML = '<div class="text-center text-slate-400 text-sm mt-10">कोई रिकॉर्ड नहीं</div>';
+                return;
+            }
+            list.innerHTML = state.history.map(h => `
+                <div class="history-item">
+                    <div class="text-[10px] text-slate-400">${h.q}</div>
+                    <div class="font-bold text-blue-500">${h.a}</div>
+                </div>
+            `).join('');
+        }
+
+        function clearHistory() {
+            state.history = [];
+            renderHistory();
+        }
+    </script>
+</body>
+</html>
+
