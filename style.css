@@ -1,0 +1,199 @@
+:root{
+  --primary:green;
+  --accent: blue;
+  --bg: white;
+  --card:#bec9b7;
+  --text:black;
+  --muted:blue;
+  --border:red;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: "Noto Sans Devanagari", Inter, Segoe UI, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  text-align: center;
+}
+
+/* ===== शीर्ष भाग ===== */
+header{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: white;
+}
+header video{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* सामग्री के पीछे रखने के लिए */
+  object-fit: cover;
+}
+header img.mainlogo{
+  width: 200px;
+  margin-top: -10px;
+}
+header h1{
+  margin-top: -25px;
+  font-size:30px;
+  font-weight:800;
+  color: yellow;
+}
+header h3.url{
+  margin-top: -20px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  font-weight: 400;
+}
+header p{
+  margin-top:-5px;
+  font-size:14px;
+  opacity:0.8;
+  font-style: italic;
+  color: #13ffbe;
+}
+
+/* ===== नेविगेशन ===== */
+nav{
+  background:#fbbcdf;
+  border-bottom:2px solid var(--border);
+}
+.nav-wrap{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  padding:15px 20px;
+}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-size:15px;
+  font-weight:500;
+}
+nav a:hover{
+  color:var(--accent);
+}
+
+/* ===== मुख्य भाग ===== */
+.container{
+  max-width:1500px;
+  margin:auto;
+  padding:15px 20px 30px;
+}
+
+.section-title{
+  margin-bottom:25px;
+}
+.section-title h2{
+  margin:0;
+  font-size:20px;
+  font-weight:900;
+  color: #000000;
+}
+
+/* ===== ग्रिड ===== */
+.portal-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:10px;
+  justify-items:center;
+}
+
+/* ===== कार्ड ===== */
+.portal-card{
+  background:var(--card);
+  border:3px solid var(--border);
+  border-radius:15px;
+  padding:26px;
+  width:100%;
+  max-width:350px;
+  transition:.25s;
+}
+.portal-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 10px 60px rgba(0,0,0,.6);
+}
+
+/* लोगो */
+.site-logo{
+  width:120px;
+  height:120px;
+  object-fit:contain;
+  margin:0 auto 10px;
+  display:block;
+  border-radius:50%;
+}
+
+/* टेक्स्ट */
+.portal-card h3{
+  margin:0 0 3px;
+  font-size:20px;
+  font-weight:700;
+  text-decoration: underline;
+}
+.portal-card p{
+  margin:0;
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.2;
+  font-style: italic;
+}
+
+/* बटन */
+.portal-card a{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 100px;
+  font-size:15px;
+  font-weight:900;
+  text-decoration:none;
+  color:var(--accent);
+  border:2px solid var(--accent);
+  border-radius:50px;
+  background-color:yellow;
+  white-space: nowrap;
+}
+.portal-card a:hover{
+  background:var(--accent);
+  color:white;
+}
+
+/* ===== जानकारी बॉक्स ===== */
+.info-box{
+  background:#b5eaff;
+  border:2px solid var(--border);
+  border-radius:15px;
+  padding:25px;
+  font-size:15px;
+  line-height:1.6;
+  max-width:700px;
+  margin:0 auto;
+}
+
+/* ===== जीमेल बटन ===== */
+.gmail-btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 20px;
+  background:#ea4335;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-size:15px;
+}
+.gmail-btn:hover{opacity:.9}
+
+/* ===== फुटर ===== */
+footer{
+  background:#937;
+  color:white;
+  font-size:12px;
+  padding:20px 10px;
+}
